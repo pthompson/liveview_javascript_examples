@@ -16,8 +16,8 @@ defmodule DemoWeb.CounterSubscribeLive do
   def render(assigns) do
     ~L"""
     <div id="counter"
-        x-data="{count: <%= @count %>}"
-        x-subscribe>
+         x-data="{count: <%= @count %>}"
+         x-subscribe>
       <h1>The count is: <span><%= @count %></span></h1>
       <h1>The stored count is: <span x-text="$store.application.count"></span></h1>
       <button phx-click="decrement"> Decrement </button>
