@@ -16,18 +16,15 @@ defmodule DemoWeb.CounterPushEventLive do
   def render(assigns) do
     ~L"""
     <div id="counter"
-        phx-hook="LiveViewPushEventHook"
-        x-data="{}">
+         phx-hook="PushEvent"
+         x-data="{}">
       <h1>The count is: <span><%= @count %></span></h1>
-      <button @click="$dispatch('liveview-push-event-to', {
-                        selector: '#counter',
-                        event: 'decrement',
-                        payload: {}
-                      })"> Decrement </button>
-      <button @click="$dispatch('liveview-push-event', {
-                        event: 'increment',
-                        payload: {}
-                      })"> Increment </button>
+      <button @click="pushEventHook.pushEventTo('#counter', 'decrement', {})">
+        Decrement
+      </button>
+      <button @click="pushEventHook.pushEvent('increment', {})">
+        Increment
+      </button>
     </div>
     """
   end
