@@ -1,13 +1,17 @@
-import "../css/app.scss"
-import "phoenix_html"
+import '../css/app.scss'
+import 'phoenix_html'
 import {
   Socket
-} from "phoenix"
-import NProgress from "nprogress"
+} from 'phoenix'
+import NProgress from 'nprogress'
 import {
   LiveSocket
-} from "phoenix_live_view"
+} from 'phoenix_live_view'
+import Spruce from '@ryangjchandler/spruce'
 import 'alpinejs'
+Spruce.store('application', {
+  count: 0
+})
 // Define hooks
 const Hooks = {}
 Hooks.LiveViewPushEventHook = {
@@ -27,7 +31,7 @@ Hooks.LiveViewPushEventHook = {
     window.removeEventListener('liveview-push-event-to', this.liveViewPushEventTo)
   }
 }
-let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 let liveSocket = new LiveSocket('/live', Socket, {
   dom: {
     onBeforeElUpdated(from, to) {
@@ -42,8 +46,8 @@ let liveSocket = new LiveSocket('/live', Socket, {
   hooks: Hooks
 })
 // Show progress bar on live navigation and form submits
-window.addEventListener("phx:page-loading-start", info => NProgress.start())
-window.addEventListener("phx:page-loading-stop", info => NProgress.done())
+window.addEventListener('phx:page-loading-start', info => NProgress.start())
+window.addEventListener('phx:page-loading-stop', info => NProgress.done())
 // connect if there are any LiveViews on the page
 liveSocket.connect()
 // expose liveSocket on window for web console debug logs and latency simulation:
