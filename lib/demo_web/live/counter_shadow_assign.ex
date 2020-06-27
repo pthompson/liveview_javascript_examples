@@ -16,7 +16,7 @@ defmodule DemoWeb.CounterShadowAssignLive do
   def render(assigns) do
     ~L"""
     <div id="counter"
-         x-data="{count: <%= @count %>}">
+        x-data="{count: <%= @count %>}">
       <h1>The assigns count is: <span><%= @count %></span></h1>
       <h1>The alpine count is: <span x-text="count"></span></h1>
       <button phx-click="decrement"> Decrement </button>
