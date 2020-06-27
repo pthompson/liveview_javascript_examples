@@ -8,6 +8,8 @@ defmodule DemoWeb.PageLive do
         <h4>LiveView / Javascript Communication Examples</h4>
         <ul>
           <li><%= live_patch("Push Event Counter", to: Routes.live_path(@socket, DemoWeb.CounterPushEventLive)) %></li>
+          <li><%= live_patch("Counter Shadow", to: Routes.live_path(@socket, DemoWeb.CounterShadowAssignLive)) %></li>
+          <li><%= live_patch("Counter Subscribe", to: Routes.live_path(@socket, DemoWeb.CounterSubscribeLive)) %></li>
         </ul>
       </article>
     </section>
