@@ -7,10 +7,12 @@ defmodule DemoWeb.CounterSubscribeSubLive do
 
   def render(assigns) do
     ~L"""
-    <div id="sub"
-        x-data="{}"
-        x-subscribe>
-      <h1>The stored count in subscriber <%= @id %> is: <span x-text="$store.application.count"></span></h1>
+    <div id="sub-<%= @id %>"
+         x-data="{}"
+         x-subscribe>
+    <h1>The stored count in LiveView #<%= @id %> is:
+      <span x-text="$store.application.count"></span>
+    </h1>
     </div>
     """
   end

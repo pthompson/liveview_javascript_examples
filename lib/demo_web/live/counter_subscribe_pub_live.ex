@@ -16,20 +16,20 @@ defmodule DemoWeb.CounterSubscribePubLive do
   def render(assigns) do
     ~L"""
     <div id="pub">
+      <h1>The count is: <span><%= @count %></span></h1>
       <%= live_render(@socket, DemoWeb.CounterSubscribeSubLive, id: "1") %>
       <%= live_render(@socket, DemoWeb.CounterSubscribeSubLive, id: "2") %>
-      <h1>The count is: <span><%= @count %></span></h1>
       <button phx-click="decrement"> Decrement </button>
       <button phx-click="increment"> Increment </button>
     </div>
+
     <template x-data="{count: <%= @count %>}"
               x-subscribe
               x-init="
                 $watch('count', (value) => {
                   $store.application.count = value
                 })
-              ">
-    </template>
+              "></template>
     """
   end
 end
