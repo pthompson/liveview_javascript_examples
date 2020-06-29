@@ -58,11 +58,6 @@ Hooks.CounterShadowEvent = {
     this.el.dispatchEvent(event);
   }
 }
-Hooks.StoreHook {
-  updated() {
-    count = this.el.getAttribute('count')
-  }
-}
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 let liveSocket = new LiveSocket('/live', Socket, {
   dom: {

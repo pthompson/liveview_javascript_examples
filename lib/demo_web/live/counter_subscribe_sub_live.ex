@@ -13,7 +13,7 @@ defmodule DemoWeb.CounterSubscribeSubLive do
     <h1>The stored count in LiveView #<%= @id %> is:
       <span x-text="$store.application.count"></span>
     </h1>
-    </div>
+
     """
   end
 end

@@ -22,11 +22,13 @@ defmodule DemoWeb.Router do
     live("/counter-via-hook", CounterViaHookLive)
     live "/counter-push-event", CounterPushEventLive
     live "/counter-shadow", CounterShadowAssignLive
+    live "/counter-event-pub", CounterEventPubLive
+    live "/counter-event-sub", CounterEventSubLive
+    live "/counter-event-dispatch", CounterViaEventDispatchLive
+    live "/counter-shadow-event", CounterShadowViaEventsLive
     live "/counter-subscribe", CounterSubscribeLive
     live "/counter-subscribe-pub", CounterSubscribePubLive
     live "/counter-subscribe-sub", CounterSubscribeSubLive
-    live "/counter-event-dispatch", CounterViaEventDispatchLive
-    live "/counter-shadow-event", CounterShadowViaEventsLive
   end
 
   # Other scopes may use custom stacks.
