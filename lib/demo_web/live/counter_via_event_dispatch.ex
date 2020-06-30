@@ -1,4 +1,4 @@
-defmodule DemoWeb.CounterPushEventLive do
+defmodule DemoWeb.CounterViaEventDispatchLive do
   use DemoWeb, :live_view
 
   def mount(_params, _session, socket) do
@@ -16,13 +16,20 @@ defmodule DemoWeb.CounterPushEventLive do
   def render(assigns) do
     ~L"""
     <div id="counter"
-     phx-hook="PushEvent"
+     phx-hook="LiveViewPushEvent"
      x-data="{}">
     <h1>The count is: <span><%= @count %></span></h1>
-    <button @click="pushEventHook.pushEvent('decrement', {})">
+    <button @click="$dispatch('liveview-push-event', {
+                    event: 'decrement',
+                    payload: {}
+                  })">
     Decrement
     </button>
-    <button @click="pushEventHook.pushEventTo('#counter', 'increment', {})">
+        <button @click="$dispatch('liveview-push-event-to', {
+                    selector: '#counter',
+                    event: 'increment',
+                    payload: {}
+                  })">
     Increment
     </button>
     </div>

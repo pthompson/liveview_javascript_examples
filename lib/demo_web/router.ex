@@ -18,8 +18,15 @@ defmodule DemoWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live("/counter", CounterLive)
+    live("/counter-via-hook", CounterViaHookLive)
     live "/counter-push-event", CounterPushEventLive
     live "/counter-shadow", CounterShadowAssignLive
+    live "/counter-shadow-dom", CounterShadowAssignDomLive
+    live "/counter-event-pub", CounterEventPubLive
+    live "/counter-event-sub", CounterEventSubLive
+    live "/counter-event-dispatch", CounterViaEventDispatchLive
+    live "/counter-shadow-event", CounterShadowViaEventsLive
     live "/counter-subscribe", CounterSubscribeLive
     live "/counter-subscribe-pub", CounterSubscribePubLive
     live "/counter-subscribe-sub", CounterSubscribeSubLive

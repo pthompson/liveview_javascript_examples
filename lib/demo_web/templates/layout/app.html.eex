@@ -1,5 +1,4 @@
 <main role="main" class="container">
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-  <%= @inner_content %>
+  <p class="alert alert-info mt-2" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger mt-2" role="alert"><%= get_flash(@conn, :error) %></p> <%= render @view_module, @view_template, assigns %>
 </main>

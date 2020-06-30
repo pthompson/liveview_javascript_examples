@@ -1,4 +1,4 @@
-defmodule DemoWeb.CounterSubscribeLive do
+defmodule DemoWeb.CounterLive do
   use DemoWeb, :live_view
 
   def mount(_params, _session, socket) do
@@ -15,25 +15,11 @@ defmodule DemoWeb.CounterSubscribeLive do
 
   def render(assigns) do
     ~L"""
-    <div id="counter"
-        x-data="{}"
-        x-subscribe>
+    <div id="counter">
     <h1>The count is: <span><%= @count %></span></h1>
-    <h1>The stored count is:
-      <span x-text="$store.application.count"></span>
-    </h1>
     <button phx-click="decrement"> Decrement </button>
     <button phx-click="increment"> Increment </button>
     </div>
-
-    <template x-data="{count: <%= @count %>}"
-            x-subscribe
-            x-init="
-              $watch('count', (value) => {
-                $store.application.count = value
-              })
-            ">
-    </template>
     """
   end
 end
