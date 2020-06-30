@@ -12,6 +12,7 @@ defmodule DemoWeb.PageLive do
           <li><%= live_patch("Push Event Counter", to: Routes.live_path(@socket, DemoWeb.CounterPushEventLive)) %></li>
           <li><%= live_patch("Counter Event PubSub", to: Routes.live_path(@socket, DemoWeb.CounterEventPubLive)) %></li>
           <li><%= live_patch("Counter Shadow", to: Routes.live_path(@socket, DemoWeb.CounterShadowAssignLive)) %></li>
+          <li><%= live_patch("Counter Shadow Change Dom", to: Routes.live_path(@socket, DemoWeb.CounterShadowAssignDomLive)) %></li>
           <li><%= live_patch("Counter Subscribe", to: Routes.live_path(@socket, DemoWeb.CounterSubscribeLive)) %></li>
           <li><%= live_patch("Counter PubSub", to: Routes.live_path(@socket, DemoWeb.CounterSubscribePubLive)) %></li>
           <li><%= live_patch("Counter Event Dispatch", to: Routes.live_path(@socket, DemoWeb.CounterViaEventDispatchLive)) %></li>

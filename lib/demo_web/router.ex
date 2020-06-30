@@ -22,6 +22,7 @@ defmodule DemoWeb.Router do
     live("/counter-via-hook", CounterViaHookLive)
     live "/counter-push-event", CounterPushEventLive
     live "/counter-shadow", CounterShadowAssignLive
+    live "/counter-shadow-dom", CounterShadowAssignDomLive
     live "/counter-event-pub", CounterEventPubLive
     live "/counter-event-sub", CounterEventSubLive
     live "/counter-event-dispatch", CounterViaEventDispatchLive
