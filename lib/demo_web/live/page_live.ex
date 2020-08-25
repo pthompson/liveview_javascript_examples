@@ -17,6 +17,7 @@ defmodule DemoWeb.PageLive do
           <li><%= live_patch("Counter PubSub", to: Routes.live_path(@socket, DemoWeb.CounterSubscribePubLive)) %></li>
           <li><%= live_patch("Counter Event Dispatch", to: Routes.live_path(@socket, DemoWeb.CounterViaEventDispatchLive)) %></li>
           <li><%= live_patch("Counter Shadow with Event", to: Routes.live_path(@socket, DemoWeb.CounterShadowViaEventsLive)) %></li>
+          <li><%= live_patch("Counter Shadow with Handle Event", to: Routes.live_path(@socket, DemoWeb.CounterShadowViaHandleEventLive)) %></li>
 
 
         </ul>

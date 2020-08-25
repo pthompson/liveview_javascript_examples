@@ -1,12 +1,8 @@
 import '../css/app.scss'
 import 'phoenix_html'
-import {
-  Socket
-} from 'phoenix'
+import { Socket } from 'phoenix'
 import NProgress from 'nprogress'
-import {
-  LiveSocket
-} from 'phoenix_live_view'
+import { LiveSocket } from 'phoenix_live_view'
 import Spruce from '@ryangjchandler/spruce'
 import 'alpinejs'
 Spruce.store('application', {
@@ -15,53 +11,70 @@ Spruce.store('application', {
 // Define hooks
 const Hooks = {}
 Hooks.PushEvent = {
-  mounted() {
+  mounted () {
     window.pushEventHook = this
   }
 }
 Hooks.Counter = {
-  mounted() {
+  mounted () {
     window.counterHook = this
   },
-  decrement() {
+  decrement () {
     this.pushEvent('decrement', {})
   },
-  increment(selector) {
+  increment (selector) {
     this.pushEventTo(selector, 'increment', {})
   }
 }
 Hooks.LiveViewPushEvent = {
-  mounted() {
+  mounted () {
     const liveView = this
-    this.liveViewPushEvent = function(e) {
+    this.liveViewPushEvent = function (e) {
       liveView.pushEvent(e.detail.event, e.detail.payload)
     }
-    this.liveViewPushEventTo = function(e) {
+    this.liveViewPushEventTo = function (e) {
       liveView.pushEventTo(e.detail.selector, e.detail.event, e.detail.payload)
     }
     window.addEventListener('liveview-push-event', this.liveViewPushEvent)
     window.addEventListener('liveview-push-event-to', this.liveViewPushEventTo)
   },
-  destroyed() {
+  destroyed () {
     window.removeEventListener('liveview-push-event', this.liveViewPushEvent)
-    window.removeEventListener('liveview-push-event-to', this.liveViewPushEventTo)
+    window.removeEventListener(
+      'liveview-push-event-to',
+      this.liveViewPushEventTo
+    )
   }
 }
 Hooks.CounterShadowEvent = {
-  updated() {
+  updated () {
     var count = this.el.getAttribute('count')
     var event = new CustomEvent('count-updated', {
       detail: {
         count: count
       }
-    });
-    this.el.dispatchEvent(event);
+    })
+    this.el.dispatchEvent(event)
   }
 }
-let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
+
+Hooks.CounterShadowHandleEvent = {
+  mounted () {
+    this.handleEvent('count-updated', ({ count }) => {
+      let event = new CustomEvent('count-updated', {
+        detail: { count: count }
+      })
+      this.el.dispatchEvent(event)
+    })
+  }
+}
+
+let csrfToken = document
+  .querySelector("meta[name='csrf-token']")
+  .getAttribute('content')
 let liveSocket = new LiveSocket('/live', Socket, {
   dom: {
-    onBeforeElUpdated(from, to) {
+    onBeforeElUpdated (from, to) {
       if (from.__x) {
         window.Alpine.clone(from.__x, to)
       }

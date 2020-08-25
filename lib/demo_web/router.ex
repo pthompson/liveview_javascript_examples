@@ -27,6 +27,7 @@ defmodule DemoWeb.Router do
     live "/counter-event-sub", CounterEventSubLive
     live "/counter-event-dispatch", CounterViaEventDispatchLive
     live "/counter-shadow-event", CounterShadowViaEventsLive
+    live "/counter-shadow-handle-event", CounterShadowViaHandleEventLive
     live "/counter-subscribe", CounterSubscribeLive
     live "/counter-subscribe-pub", CounterSubscribePubLive
     live "/counter-subscribe-sub", CounterSubscribeSubLive
